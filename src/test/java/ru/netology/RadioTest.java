@@ -61,6 +61,8 @@ class ConditionerTest {
         assertEquals(expected, radio.getCurrentStationNumber());
     }
 
+// prev
+
     @Test
     public void shouldPrevStationNumberUnderLimitUp() {
         radio.setMinStationNumber(0);
@@ -109,5 +111,71 @@ class ConditionerTest {
         radio.prev();
         var expected = 9;
         assertEquals(expected, radio.getCurrentStationNumber());
+    }
+
+//    volume
+
+//    minus
+
+    @Test
+    public void shouldMinusSoundVolumeUnderLimitUp() {
+        radio.setMinSoundVolume(0);
+        radio.setMaxSoundVolume(10);
+        radio.setCurrentSoundVolume(10);
+        radio.minus();
+        var expected = 9;
+        assertEquals(expected, radio.getCurrentSoundVolume());
+    }
+
+    @Test
+    public void shouldMinusSoundVolumeUnderLimitDown() {
+        radio.setMinSoundVolume(0);
+        radio.setMaxSoundVolume(10);
+        radio.setCurrentSoundVolume(1);
+        radio.minus();
+        var expected = 0;
+        assertEquals(expected, radio.getCurrentSoundVolume());
+    }
+
+    @Test
+    public void shouldMinusSoundVolumeAfterLimitDown() {
+        radio.setMinSoundVolume(0);
+        radio.setMaxSoundVolume(10);
+        radio.setCurrentSoundVolume(-1);
+        radio.minus();
+        var expected = 0;
+        assertEquals(expected, radio.getCurrentSoundVolume());
+    }
+
+//    plus
+
+    @Test
+    public void shouldPlusSoundVolumeUnderLimitUp() {
+        radio.setMinSoundVolume(0);
+        radio.setMaxSoundVolume(10);
+        radio.setCurrentSoundVolume(9);
+        radio.plus();
+        var expected = 10;
+        assertEquals(expected, radio.getCurrentSoundVolume());
+    }
+
+    @Test
+    public void shouldPlusSoundVolumeUnderLimitDown() {
+        radio.setMinSoundVolume(0);
+        radio.setMaxSoundVolume(10);
+        radio.setCurrentSoundVolume(0);
+        radio.plus();
+        var expected = 1;
+        assertEquals(expected, radio.getCurrentSoundVolume());
+    }
+
+    @Test
+    public void shouldPlusSoundVolumeAfterLimitUp() {
+        radio.setMinSoundVolume(0);
+        radio.setMaxSoundVolume(10);
+        radio.setCurrentSoundVolume(10);
+        radio.plus();
+        var expected = 10;
+        assertEquals(expected, radio.getCurrentSoundVolume());
     }
 }

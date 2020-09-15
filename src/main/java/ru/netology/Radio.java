@@ -98,14 +98,19 @@ public class Radio {
 // методы для volume
 
         public void plus () {
-            if (currentSoundVolume == 0) {
-                currentSoundVolume = maxSoundVolume;
-            }
             if (currentSoundVolume < maxSoundVolume) {
                 currentSoundVolume = currentSoundVolume + 1;
             } else {
                 currentSoundVolume = maxSoundVolume;
             }
+//            if (currentSoundVolume == minSoundVolume) {
+//                currentSoundVolume = maxSoundVolume;
+//            }
+//            if (currentSoundVolume < maxSoundVolume) {
+//                currentSoundVolume = currentSoundVolume + 1;
+//            } else {
+//                currentSoundVolume = maxSoundVolume;
+//            }
         }
         public void minus () {
             if (currentSoundVolume > minSoundVolume) {
